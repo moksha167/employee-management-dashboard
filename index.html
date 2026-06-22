@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Employee Management Dashboard</h1>
+    </header>
+
+    <main>
+
+        <!-- Dashboard Overview -->
+        <section class="dashboard">
+            <div class="card">
+                <h3>Total Employees</h3>
+                <p>25</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Employees</h3>
+                <p>20</p>
+            </div>
+
+            <div class="card">
+                <h3>Departments</h3>
+                <p>5</p>
+            </div>
+
+            <div class="card">
+                <h3>Recent Activity</h3>
+                <p>New Employee Added</p>
+            </div>
+        </section>
+
+        <!-- Search and Filter -->
+        <section class="controls">
+            <input type="text" placeholder="Search Employee">
+
+            <select>
+                <option>All Departments</option>
+                <option>IT</option>
+                <option>HR</option>
+                <option>Finance</option>
+            </select>
+        </section>
+
+        <!-- Employee Table -->
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Rahul</td>
+                        <td>IT</td>
+                        <td>Active</td>
+                    </tr>
+
+                    <tr>
+                        <td>Priya</td>
+                        <td>HR</td>
+                        <td>Active</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Employee Form -->
+        <section>
+            <h2>Add Employee</h2>
+
+            <form>
+                <input type="text" placeholder="Employee Name">
+
+                <input type="text" placeholder="Department">
+
+                <button type="submit">
+                    Add Employee
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
