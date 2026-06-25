@@ -1,4 +1,4 @@
-let employees = [
+let employees = JSON.parse(localStorage.getItem("employees")) || [
     {
         name: "Rahul",
         department: "IT",
@@ -55,6 +55,7 @@ document.getElementById("employeeForm").addEventListener("submit", function(even
         department: department,
         status: "Active"
     });
+    localStorage.setItem("employees", JSON.stringify(employees));
 
     displayEmployees();
 
@@ -67,6 +68,74 @@ function deleteEmployee(index) {
 
     employees.splice(index, 1);
 
+    localStorage.setItem("employees", JSON.stringify(employees));
+
     displayEmployees();
 
 }
+document.getElementById("searchInput").addEventListener("keyup", function() {
+
+    let searchValue = this.value.toLowerCase();
+
+    let filteredEmployees = employees.filter(employee =>
+        employee.name.toLowerCase().includes(searchValue)
+    );
+
+    let table = document.getElementById("employeeTable");
+
+    table.innerHTML = "";
+
+    filteredEmployees.forEach((employee, index) => {
+
+        table.innerHTML += `
+        <tr>
+            <td>${employee.name}</td>
+            <td>${employee.department}</td>
+            <td>${employee.status}</td>
+            <td>
+                <button onclick="deleteEmployee(${index})">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        `;
+
+    });
+
+});
+document.getElementById("departmentFilter").addEventListener("change", function() {
+
+    let selectedDepartment = this.value;
+
+    let filteredEmployees = employees.filter(employee => {
+
+        if (selectedDepartment === "All Departments") {
+            return true;
+        }
+
+        return employee.department === selectedDepartment;
+
+    });
+
+    let table = document.getElementById("employeeTable");
+
+    table.innerHTML = "";
+
+    filteredEmployees.forEach((employee, index) => {
+
+        table.innerHTML += `
+        <tr>
+            <td>${employee.name}</td>
+            <td>${employee.department}</td>
+            <td>${employee.status}</td>
+            <td>
+                <button onclick="deleteEmployee(${index})">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        `;
+
+    });
+
+});
