@@ -25,6 +25,10 @@ function displayEmployees() {
             <td>${employee.department}</td>
             <td>${employee.status}</td>
             <td>
+                <button onclick="editEmployee(${index})">
+                    Edit
+                </button>
+
                 <button onclick="deleteEmployee(${index})">
                     Delete
                 </button>
@@ -137,5 +141,34 @@ document.getElementById("departmentFilter").addEventListener("change", function(
         `;
 
     });
+
+});
+function editEmployee(index) {
+
+    let newName = prompt("Enter new employee name:", employees[index].name);
+
+    let newDepartment = prompt("Enter new department:", employees[index].department);
+
+    if (newName !== null && newDepartment !== null && newName !== "" && newDepartment !== "") {
+
+        employees[index].name = newName;
+        employees[index].department = newDepartment;
+
+        localStorage.setItem("employees", JSON.stringify(employees));
+
+        displayEmployees();
+
+    }
+
+}
+document.getElementById("sortButton").addEventListener("click", function () {
+
+    employees.sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+    });
+
+    localStorage.setItem("employees", JSON.stringify(employees));
+
+    displayEmployees();
 
 });
